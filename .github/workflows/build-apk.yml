@@ -50,11 +50,14 @@ jobs:
       - name: 7. Build Web Production Bundle (dist)
         run: npm run build
 
-      - name: 8. Sync Capacitor to Android
-        run: npx cap sync android
-
-      - name: 9. Grant Execute Permission to Gradlew
+      - name: 8. Grant Execute Permission to Gradlew
         run: chmod +x android/gradlew
+
+      - name: 9. Sync Capacitor to Android
+        env:
+          CI: 'true'
+          CAPACITOR_TELEMETRY: 'false'
+        run: npx cap sync android --inline
 
       - name: 10. Build Debug APK with Gradle
         working-directory: android
