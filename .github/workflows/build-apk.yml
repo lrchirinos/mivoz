@@ -1,0 +1,75 @@
+name: Build Android APK (Vocalis AAC)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Vocalis-AAC APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 2. Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 3. Set up Java 21 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'gradle'
+
+      - name: 4. Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: 5. Install Node Dependencies
+        run: npm ci
+
+      - name: 6. Verify or Fetch Local Voice Model (Fallback)
+        run: |
+          mkdir -p public/piper
+          if [ ! -f "public/piper/es_MX-ald-medium.onnx" ] || [ $(wc -c < "public/piper/es_MX-ald-medium.onnx" 2>/dev/null || echo 0) -lt 1000000 ]; then
+            echo "Obteniendo binario es_MX-ald-medium.onnx..."
+            curl -L -o public/piper/es_MX-ald-medium.onnx "https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_MX/ald/medium/es_MX-ald-medium.onnx"
+          fi
+          if [ ! -f "public/piper/es_MX-ald-medium.onnx.json" ]; then
+            curl -L -o public/piper/es_MX-ald-medium.onnx.json "https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_MX/ald/medium/es_MX-ald-medium.onnx.json"
+          fi
+
+      - name: 7. Build Web Production Bundle (dist)
+        run: npm run build
+
+      - name: 8. Sync Capacitor to Android
+        run: npx cap sync android
+
+      - name: 9. Grant Execute Permission to Gradlew
+        run: chmod +x android/gradlew
+
+      - name: 10. Build Debug APK with Gradle
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: 11. Prepare Artifact
+        run: |
+          mkdir -p build-output
+          cp android/app/build/outputs/apk/debug/app-debug.apk build-output/Vocalis-AAC.apk
+          echo "APK generado exitosamente:"
+          ls -lh build-output/Vocalis-AAC.apk
+
+      - name: 12. Upload Vocalis-AAC-apk Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vocalis-AAC-apk
+          path: build-output/Vocalis-AAC.apk
+          if-no-files-found: error
+          retention-days: 30

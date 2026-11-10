@@ -1,0 +1,18 @@
+{
+  "short_name": "Vocalis AAC",
+  "name": "Vocalis - Comunicación Asistiva ACV",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "display": "standalone",
+  "orientation": "landscape-primary",
+  "description": "PWA de Comunicación Aumentativa y Alternativa para pacientes post-ACV con afasia y hemiparesia."
+}
