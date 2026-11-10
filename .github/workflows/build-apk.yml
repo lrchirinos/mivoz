@@ -61,7 +61,13 @@ jobs:
 
       - name: 10. Build Debug APK with Gradle
         working-directory: android
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: |
+          set -o pipefail
+          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee build.log || {
+            echo "::error::Gradle assembleDebug failed. Last 40 lines:"
+            tail -n 40 build.log
+            exit 1
+          }
 
       - name: 11. Prepare Artifact
         run: |
@@ -89,3 +95,11 @@ jobs:
           path: build-output/MiVoz.apk
           if-no-files-found: error
           retention-days: 30
+
+      - name: 13. Upload Gradle Build Log (Diagnostic)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gradle-build-log
+          path: android/build.log
+          if-no-files-found: ignore
