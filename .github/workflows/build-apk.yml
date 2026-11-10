@@ -29,8 +29,9 @@ jobs:
           java-version: '21'
           cache: 'gradle'
 
-      - name: 4. Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: 4. Accept Android SDK Licenses
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
       - name: 5. Install Node Dependencies
         run: npm ci
@@ -62,9 +63,15 @@ jobs:
       - name: 11. Prepare Artifact
         run: |
           mkdir -p build-output
-          cp android/app/build/outputs/apk/debug/app-debug.apk build-output/MiVoz.apk
-          echo "APK generado exitosamente:"
-          ls -lh build-output/MiVoz.apk
+          APK_FILE=$(find android/app/build/outputs/apk -name "*.apk" | head -n 1)
+          if [ -n "$APK_FILE" ]; then
+            cp "$APK_FILE" build-output/MiVoz.apk
+            echo "APK generado exitosamente: $APK_FILE -> build-output/MiVoz.apk"
+            ls -lh build-output/MiVoz.apk
+          else
+            echo "Error: No se encontró ningún archivo APK generado."
+            exit 1
+          fi
 
       - name: 12. Upload MiVoz-apk Artifact
         uses: actions/upload-artifact@v4
