@@ -1,5 +1,7 @@
 # MiVoz — PWA & App Android de Comunicación Aumentativa (CAA / AAC)
 
+> 📘 **Documentación y Arquitectura del Proyecto:** Consulta [`PROJECT_CONTEXT.md`](./PROJECT_CONTEXT.md) para conocer las reglas clínicas obligatorias (control de eventos táctiles, cooldown anti-temblor, arquitectura de audio offline y proceso de compilación del APK en GitHub Actions).
+
 **MiVoz** es una aplicación de Comunicación Aumentativa y Alternativa de grado clínico diseñada para pacientes con afasia expresiva y hemiparesia severa (post-ACV / Ictus).
 
 ## Características Principales
