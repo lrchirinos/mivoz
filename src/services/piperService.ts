@@ -6,7 +6,7 @@
 
 import { TtsSession } from '@mintplex-labs/piper-tts-web'
 
-const DB_NAME = 'vocalis_aac_piper_cache'
+const DB_NAME = 'mivoz_piper_cache'
 const DB_VERSION = 1
 const STORE_NAME = 'synthesized_phrases'
 

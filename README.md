@@ -1,32 +1,18 @@
-# React + TypeScript + Vite
+# MiVoz — PWA & App Android de Comunicación Aumentativa (CAA / AAC)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**MiVoz** es una aplicación de Comunicación Aumentativa y Alternativa de grado clínico diseñada para pacientes con afasia expresiva y hemiparesia severa (post-ACV / Ictus).
 
-Currently, two official plugins are available:
+## Características Principales
+- **Voz Masculina Neuronal Offline por Defecto:** Audios pre-renderizados a 0ms de latencia para botones principales, SÍ, NO y frases de auxilio, más motor local WASM Piper (`es_MX-ald-medium`).
+- **Control Motor Seguro:** Activación instantánea en `onPointerDown` (sin fallos por arrastre de dedo).
+- **Protección Anti-Temblor:** Cooldown visual configurable (2.5s clínico por defecto).
+- **Botones Binarios Gigantes:** SÍ y NO sobredimensionados para respuesta rápida.
+- **Grabación de Voz Real:** Permite a familiares grabar audios reales para cada botón con el micrófono.
+- **Modo Cuidador Protegido:** Desbloqueo mediante pulsación continua de 3 segundos.
+- **Kiosko y Wake Lock:** Pantalla siempre encendida sin apagarse durante el uso.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Scripts
+- `npm run dev` — Servidor de desarrollo Vite.
+- `npm run build` — Compilación de producción (`dist/`).
+- `npm run lint` — Validación de código con Oxlint.
+- `npx cap sync android` — Sincronización de assets web a la app Android.

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Vocalis AAC</string>
-    <string name="title_activity_main">Vocalis AAC</string>
-    <string name="package_name">com.vocalis.aac</string>
-    <string name="custom_url_scheme">com.vocalis.aac</string>
+    <string name="app_name">MiVoz</string>
+    <string name="title_activity_main">MiVoz</string>
+    <string name="package_name">com.mivoz.app</string>
+    <string name="custom_url_scheme">com.mivoz.app</string>
 </resources>

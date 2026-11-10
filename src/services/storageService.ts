@@ -2,13 +2,15 @@ import { DEFAULT_AAC_BUTTONS, DEFAULT_CAREGIVER_SETTINGS } from '../constants/de
 import type { AACButton, CaregiverSettings } from '../types/aac'
 
 const STORAGE_KEYS = {
-  BUTTONS: 'vocalis_aac_buttons_v1',
-  SETTINGS: 'vocalis_aac_settings_v1',
+  BUTTONS: 'mivoz_buttons_v1',
+  LEGACY_BUTTONS: 'vocalis_aac_buttons_v1',
+  SETTINGS: 'mivoz_settings_v1',
+  LEGACY_SETTINGS: 'vocalis_aac_settings_v1',
 } as const
 
 export function loadAACButtons(): AACButton[] {
   try {
-    const raw = localStorage.getItem(STORAGE_KEYS.BUTTONS)
+    const raw = localStorage.getItem(STORAGE_KEYS.BUTTONS) || localStorage.getItem(STORAGE_KEYS.LEGACY_BUTTONS)
     if (!raw) return DEFAULT_AAC_BUTTONS
     const parsed = JSON.parse(raw)
     if (Array.isArray(parsed) && parsed.length === 6) {
@@ -30,7 +32,7 @@ export function saveAACButtons(buttons: AACButton[]): void {
 
 export function loadCaregiverSettings(): CaregiverSettings {
   try {
-    const raw = localStorage.getItem(STORAGE_KEYS.SETTINGS)
+    const raw = localStorage.getItem(STORAGE_KEYS.SETTINGS) || localStorage.getItem(STORAGE_KEYS.LEGACY_SETTINGS)
     if (!raw) return DEFAULT_CAREGIVER_SETTINGS
     const parsed = JSON.parse(raw)
     if (parsed && typeof parsed === 'object') {
@@ -56,7 +58,9 @@ export function saveCaregiverSettings(settings: CaregiverSettings): void {
 export function resetAllToDefaults(): { buttons: AACButton[]; settings: CaregiverSettings } {
   try {
     localStorage.removeItem(STORAGE_KEYS.BUTTONS)
+    localStorage.removeItem(STORAGE_KEYS.LEGACY_BUTTONS)
     localStorage.removeItem(STORAGE_KEYS.SETTINGS)
+    localStorage.removeItem(STORAGE_KEYS.LEGACY_SETTINGS)
   } catch (error) {
     console.error('Error resetting storage:', error)
   }

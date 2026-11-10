@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.vocalis.aac',
-  appName: 'Vocalis AAC',
+  appId: 'com.mivoz.app',
+  appName: 'MiVoz',
   webDir: 'dist'
 };
 

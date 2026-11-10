@@ -1,4 +1,4 @@
-name: Build Android APK (Vocalis AAC)
+name: Build Android APK (MiVoz)
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build Vocalis-AAC APK
+    name: Build MiVoz APK
     runs-on: ubuntu-latest
 
     steps:
@@ -62,14 +62,14 @@ jobs:
       - name: 11. Prepare Artifact
         run: |
           mkdir -p build-output
-          cp android/app/build/outputs/apk/debug/app-debug.apk build-output/Vocalis-AAC.apk
+          cp android/app/build/outputs/apk/debug/app-debug.apk build-output/MiVoz.apk
           echo "APK generado exitosamente:"
-          ls -lh build-output/Vocalis-AAC.apk
+          ls -lh build-output/MiVoz.apk
 
-      - name: 12. Upload Vocalis-AAC-apk Artifact
+      - name: 12. Upload MiVoz-apk Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Vocalis-AAC-apk
-          path: build-output/Vocalis-AAC.apk
+          name: MiVoz-apk
+          path: build-output/MiVoz.apk
           if-no-files-found: error
           retention-days: 30

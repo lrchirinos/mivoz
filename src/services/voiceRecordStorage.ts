@@ -3,7 +3,7 @@
  * Stores microphone audio clips per AAC button and binary answers (SÍ / NO).
  */
 
-const DB_NAME = 'vocalis_aac_audiodb'
+const DB_NAME = 'mivoz_audiodb'
 const DB_VERSION = 1
 const STORE_NAME = 'button_recordings'
 

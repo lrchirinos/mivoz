@@ -1,4 +1,4 @@
-package com.vocalis.aac;
+package com.mivoz.app;
 
 import com.getcapacitor.BridgeActivity;
 
