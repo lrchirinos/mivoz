@@ -12,7 +12,7 @@
   "start_url": "/",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "landscape",
   "description": "PWA de Comunicación Aumentativa y Alternativa para pacientes post-ACV con afasia y hemiparesia."
 }

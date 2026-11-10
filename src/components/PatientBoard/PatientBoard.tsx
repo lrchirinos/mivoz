@@ -59,6 +59,11 @@ export const PatientBoard: React.FC<PatientBoardProps> = ({
           gap-2 sm:gap-3 md:gap-4
           p-2 sm:p-3 md:p-4
         "
+        style={{
+          paddingLeft: 'max(0.5rem, env(safe-area-inset-left))',
+          paddingRight: 'max(0.5rem, env(safe-area-inset-right))',
+          paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))',
+        }}
       >
         {buttons.map((btn, index) => (
           <AACCard

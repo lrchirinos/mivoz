@@ -85,6 +85,24 @@ export function App() {
     [speech]
   )
 
+  // Auto-request fullscreen on first user touch if running on a mobile browser
+  useEffect(() => {
+    const isMobileTouch =
+      window.matchMedia('(pointer: coarse)').matches ||
+      /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+
+    if (!isMobileTouch) return
+
+    const handleFirstTouch = () => {
+      if (!document.fullscreenElement && document.fullscreenEnabled) {
+        document.documentElement.requestFullscreen?.().catch(() => {})
+      }
+    }
+
+    window.addEventListener('pointerdown', handleFirstTouch, { once: true })
+    return () => window.removeEventListener('pointerdown', handleFirstTouch)
+  }, [])
+
   // Accessibility keyboard switch shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
