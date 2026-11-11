@@ -21,6 +21,7 @@ PHRASES = {
     "btn-6.mp3": "Necesito otra cosa, por favor ven a verme.",
     "btn-yes.mp3": "Sí.",
     "btn-no.mp3": "No.",
+    "btn-whoami.mp3": "Soy Juan Antonio Ramírez Vereáu, y soy más listo que aíroman.",
     "phrase-0.mp3": "Muchas gracias.",
     "phrase-1.mp3": "Por favor.",
     "phrase-2.mp3": "Tengo frío.",

@@ -1,4 +1,4 @@
-name: Build Android APK (MiVoz)
+name: Build Android APK (codegeass)
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build MiVoz APK
+    name: Build codegeass APK
     runs-on: ubuntu-latest
 
     steps:
@@ -79,20 +79,21 @@ jobs:
             APK_FILE=$(find android -name "*.apk" | head -n 1)
           fi
           if [ -n "$APK_FILE" ]; then
+            cp "$APK_FILE" build-output/codegeass.apk
             cp "$APK_FILE" build-output/MiVoz.apk
-            echo "APK copiado exitosamente: $APK_FILE -> build-output/MiVoz.apk"
-            ls -lh build-output/MiVoz.apk
+            echo "APK copiado exitosamente: $APK_FILE -> build-output/codegeass.apk"
+            ls -lh build-output/
           else
             echo "Error: No se encontró ningún archivo APK generado."
             find android -type d -name "outputs" -exec ls -laR {} + || true
             exit 1
           fi
 
-      - name: 12. Upload MiVoz-apk Artifact
+      - name: 12. Upload codegeass-apk Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MiVoz-apk
-          path: build-output/MiVoz.apk
+          name: codegeass-apk
+          path: build-output/*.apk
           if-no-files-found: error
           retention-days: 30
 

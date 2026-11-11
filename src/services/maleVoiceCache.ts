@@ -15,9 +15,10 @@ const STATIC_AUDIO_MAP: Record<string, string> = {
   'btn-5': getAudioPath('btn-5.mp3'),
   'btn-6': getAudioPath('btn-6.mp3'),
 
-  // Binary Responses
+  // Binary Responses & Identity
   'btn-yes': getAudioPath('btn-yes.mp3'),
   'btn-no': getAudioPath('btn-no.mp3'),
+  'btn-whoami': getAudioPath('btn-whoami.mp3'),
 
   // Quick Preset Phrases
   'phrase-0': getAudioPath('phrase-0.mp3'),
@@ -53,6 +54,20 @@ const TEXT_TO_AUDIO_MAP: Record<string, string> = {
   'si': getAudioPath('btn-yes.mp3'),
   'no.': getAudioPath('btn-no.mp3'),
   'no': getAudioPath('btn-no.mp3'),
+  'soy juan antonio ramirez vereau, y soy más listo que aíroman.': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramirez vereau y soy más listo que aíroman': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramírez vereáu, y soy más listo que aíroman.': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramírez vereáu y soy más listo que aíroman': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramirez vereau, soy más listo que ayroman.': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramirez vereau soy más listo que ayroman': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramírez vereáu, soy más listo que ayroman.': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramírez vereáu soy más listo que ayroman': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramirez vereau y soy más listo que ayroman.': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramirez vereau y soy más listo que ayroman': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramirez vereau y soy más listo que ironman.': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramirez vereau y soy más listo que ironman': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramírez vereau y soy más listo que ironman.': getAudioPath('btn-whoami.mp3'),
+  'soy juan antonio ramírez vereau y soy más listo que ironman': getAudioPath('btn-whoami.mp3'),
 
   // Common quick phrases
   'gracias': getAudioPath('phrase-0.mp3'),

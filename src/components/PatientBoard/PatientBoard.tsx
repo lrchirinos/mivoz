@@ -13,6 +13,7 @@ interface PatientBoardProps {
   onActivateButton: (button: AACButton) => void
   onSpeakYes: () => void
   onSpeakNo: () => void
+  onSpeakWhoAmI: () => void
   onOpenCaregiver: () => void
   onStopSpeech: () => void
 }
@@ -26,6 +27,7 @@ export const PatientBoard: React.FC<PatientBoardProps> = ({
   onActivateButton,
   onSpeakYes,
   onSpeakNo,
+  onSpeakWhoAmI,
   onOpenCaregiver,
   onStopSpeech,
 }) => {
@@ -38,11 +40,13 @@ export const PatientBoard: React.FC<PatientBoardProps> = ({
       <QuickActionBar
         onSpeakYes={onSpeakYes}
         onSpeakNo={onSpeakNo}
+        onSpeakWhoAmI={onSpeakWhoAmI}
         onOpenCaregiver={onOpenCaregiver}
         isCooldownActive={isCooldownActive}
         wakeLockActive={wakeLockActive}
         hasYesAudio={recordedAudioKeys.includes('btn-yes')}
         hasNoAudio={recordedAudioKeys.includes('btn-no')}
+        hasWhoAmIAudio={recordedAudioKeys.includes('btn-whoami')}
       />
 
       {/* Visual Cooldown / Speaking Progress Overlay */}

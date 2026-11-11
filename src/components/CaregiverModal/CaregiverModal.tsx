@@ -72,7 +72,7 @@ export const CaregiverModal: React.FC<CaregiverModalProps> = ({
             </div>
             <div>
               <h2 className="text-xl sm:text-2xl font-black text-white uppercase tracking-wide">
-                Modo Familiar y Ajustes
+                codegeass — Modo Familiar y Ajustes
               </h2>
               <p className="text-xs text-slate-400 font-semibold">
                 Personaliza botones, voces y tiempos según las necesidades del paciente

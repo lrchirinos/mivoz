@@ -75,6 +75,14 @@ export function App() {
     })
   }, [speech])
 
+  const handleSpeakWhoAmI = useCallback(() => {
+    speech.speak('Soy Juan Antonio Ramírez Vereáu, y soy más listo que aíroman.', {
+      buttonKey: 'btn-whoami',
+      label: 'JARV',
+      skipChime: false,
+    })
+  }, [speech])
+
   const handleSpeakCustom = useCallback(
     (phrase: string) => {
       speech.speak(phrase, {
@@ -117,10 +125,6 @@ export function App() {
         if (targetBtn) {
           handleActivateButton(targetBtn)
         }
-      } else if (key === 's' || key === 'y') {
-        handleSpeakYes()
-      } else if (key === 'n') {
-        handleSpeakNo()
       } else if (key === ' ' || key === 't' || key === 'h') {
         e.preventDefault()
         setIsKeyboardOpen(true)
@@ -129,11 +133,11 @@ export function App() {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isCaregiverOpen, isKeyboardOpen, buttons, handleActivateButton, handleSpeakYes, handleSpeakNo])
+  }, [isCaregiverOpen, isKeyboardOpen, buttons, handleActivateButton])
 
   return (
     <div className="w-full h-full overflow-hidden select-none touch-none bg-slate-950 text-white font-sans">
-      {/* Main Patient AAC Board with Enlarged SÍ/NO buttons & Voice badges */}
+      {/* Main Patient AAC Board with Compact SÍ/NO, QUIÉN SOY & Voice badges */}
       <PatientBoard
         buttons={buttons}
         speechStatus={speech.speechStatus}
@@ -143,6 +147,7 @@ export function App() {
         onActivateButton={handleActivateButton}
         onSpeakYes={handleSpeakYes}
         onSpeakNo={handleSpeakNo}
+        onSpeakWhoAmI={handleSpeakWhoAmI}
         onOpenCaregiver={() => setIsCaregiverOpen(true)}
         onStopSpeech={speech.stop}
       />

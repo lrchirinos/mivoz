@@ -194,12 +194,12 @@ export const ButtonEditor: React.FC<ButtonEditorProps> = ({
         </div>
       </div>
 
-      {/* Voice Recorder for SÍ and NO */}
+      {/* Voice Recorder for SÍ, NO and QUIÉN SOY */}
       <div className="bg-slate-850 p-4 rounded-3xl border border-slate-700 flex flex-col gap-3">
         <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-          Grabar voz real para respuestas rápidas (SÍ y NO):
+          Grabar voz real para respuestas rápidas e identidad:
         </span>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <VoiceRecorderWidget
             buttonKey="btn-yes"
             buttonLabel="Respuesta SÍ"
@@ -208,6 +208,11 @@ export const ButtonEditor: React.FC<ButtonEditorProps> = ({
           <VoiceRecorderWidget
             buttonKey="btn-no"
             buttonLabel="Respuesta NO"
+            onAudioChanged={onAudioChanged}
+          />
+          <VoiceRecorderWidget
+            buttonKey="btn-whoami"
+            buttonLabel="JARV (Juan Antonio)"
             onAudioChanged={onAudioChanged}
           />
         </div>

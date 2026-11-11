@@ -6,7 +6,7 @@
 ---
 
 ## 1. Identidad y Repositorio del Proyecto
-- **Nombre de la Aplicación:** MiVoz (anteriormente Vocalis AAC)
+- **Nombre de la Aplicación:** codegeass (anteriormente MiVoz / Vocalis AAC)
 - **ID de Paquete Android:** `com.mivoz.app`
 - **Repositorio Oficial:** `https://github.com/lrchirinos/mivoz.git`
 - **Rama Principal:** `main`
@@ -65,7 +65,7 @@ El sistema utiliza una arquitectura híbrida de **Voz Masculina Offline Garantiz
 ```
 
 1. **Audios Pre-renderizados (Latencia 0ms):**
-   - Ubicados en `public/audio/male/` para los 6 botones estándar (`b1.mp3` a `b6.mp3`), SÍ (`yes.mp3`), NO (`no.mp3`) y auxilio (`help.mp3`).
+   - Ubicados en `public/audio/male/` para los 6 botones estándar (`btn-1.mp3` a `btn-6.mp3`), SÍ (`btn-yes.mp3`), NO (`btn-no.mp3`), presentación (`btn-whoami.mp3`) y frases rápidas.
 2. **Motor Neuronal WebAssembly Offline (Piper TTS):**
    - Modelo: `public/piper/es_MX-ald-medium.onnx` y `es_MX-ald-medium.onnx.json`.
    - Se ejecuta 100% en el dispositivo con `onnxruntime-web` para sintetizar frases nuevas creadas por la familia o frases libres desde el teclado.
